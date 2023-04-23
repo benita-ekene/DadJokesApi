@@ -8,13 +8,12 @@ class JokeController {
         headers: {"X-RapidAPI-Key": "ac36004e64msh2f03d5e28e75ab5p1a32bfjsn9dc87404b637"}
       })
       .then(response => {
-        const joke = response.data.body[0];
-        const formattedJoke = {
-          setup: joke.setup,
-          punchline: joke.punchline
-        };
-        res.json(formattedJoke);
-      })
+        const joke = response.data.body[0]
+        res.json({
+          JokeSetup: joke.setup,
+          MainJoke: joke.punchline
+        })
+      }) 
       .catch(error => {
         res.status(500).json("Error fetching dad's joke");
       });
